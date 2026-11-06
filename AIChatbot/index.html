@@ -4,154 +4,178 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7f4">
-  <meta name="description" content="Explore approachable oral-health education and a simple chatbot demo.">
-  <title>BrightBite — Oral Health Education</title>
+  <meta name="description" content="DentiAI is a demo for exploring general oral-health education.">
+  <title>DentiAI — Oral Health Learning Studio</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="#home" aria-label="BrightBite home">
-        <span class="brand-mark" aria-hidden="true">B</span>
-        <span>BrightBite<span class="brand-caption">ORAL HEALTH, MADE CLEAR</span></span>
-      </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-        <span class="sr-only">Toggle navigation</span>
-        <span aria-hidden="true">☰</span>
-      </button>
-      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
-        <a href="#home" data-nav="home">Home</a>
-        <a href="#chat" data-nav="chat">Chat demo</a>
-        <a href="#learn" data-nav="learn">Learn</a>
-        <a href="#about" data-nav="about">About &amp; safety</a>
-        <a class="nav-cta" href="#chat">Ask a question <span aria-hidden="true">↗</span></a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" data-view="dashboard" aria-label="DentiAI dashboard"><span class="brand-icon" aria-hidden="true">D</span><span>DentiAI<small>ORAL HEALTH STUDIO</small></span></a>
+      <p class="side-label">YOUR SPACE</p>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" type="button" data-view="dashboard"><span aria-hidden="true">⌂</span> Dashboard</button>
+        <button class="nav-item" type="button" data-view="learn"><span aria-hidden="true">▤</span> Learn</button>
+        <button class="nav-item" type="button" data-view="bot"><span aria-hidden="true">◉</span> DentiBot <span class="nav-tag">DEMO</span></button>
+        <button class="nav-item" type="button" data-view="quiz"><span aria-hidden="true">✓</span> Quiz &amp; cards</button>
+        <button class="nav-item" type="button" data-view="planner"><span aria-hidden="true">◷</span> Care planner</button>
+        <button class="nav-item" type="button" data-view="clinics"><span aria-hidden="true">⌖</span> Clinic finder</button>
       </nav>
-    </div>
-  </header>
+      <p class="side-label side-label-lower">PREFERENCES</p>
+      <nav class="side-nav" aria-label="Profile and feedback">
+        <button class="nav-item" type="button" data-view="profile"><span aria-hidden="true">◎</span> Profile &amp; access</button>
+        <button class="nav-item" type="button" data-view="feedback"><span aria-hidden="true">☆</span> Feedback</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-safety"><span aria-hidden="true">i</span><p><strong>Learning, not diagnosis.</strong><br>Talk with a dental professional about personal concerns.</p></div>
+        <button class="profile-mini" type="button" data-view="profile"><span class="avatar" id="mini-avatar">☺</span><span><strong id="mini-name">Guest learner</strong><small>Demo account</small></span><span class="profile-dots">···</span></button>
+      </div>
+    </aside>
 
-  <main id="main-content">
-    <section class="page-section hero-section" id="home" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A friendlier way to learn</p>
-        <h1 id="hero-title">A little knowledge goes a <span>long way.</span></h1>
-        <p class="hero-intro">Explore everyday oral-health topics and try our simple chatbot demo. Clear, approachable information to help you build healthy habits.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#chat">Start a conversation <span aria-hidden="true">→</span></a>
-          <a class="text-link" href="#learn">Explore learning topics <span aria-hidden="true">↓</span></a>
-        </div>
-        <p class="hero-note"><span class="note-icon" aria-hidden="true">i</span> For education only — not a substitute for professional dental advice.</p>
-      </div>
-      <div class="hero-art" aria-label="Illustration of a smiling tooth">
-        <div class="art-sun"></div>
-        <div class="tooth">
-          <span class="tooth-eye eye-left"></span><span class="tooth-eye eye-right"></span>
-          <span class="tooth-smile"></span>
-          <span class="tooth-cheek cheek-left"></span><span class="tooth-cheek cheek-right"></span>
-        </div>
-        <span class="sparkle sparkle-one" aria-hidden="true">✳</span>
-        <span class="sparkle sparkle-two" aria-hidden="true">✦</span>
-        <span class="art-label">Small steps. Brighter smiles.</span>
-      </div>
-      <div class="hero-bottom">
-        <span>START WITH A QUESTION</span>
-        <div class="hero-prompts">
-          <button class="prompt-chip" type="button" data-prompt="How often should I brush?">How often should I brush? <span aria-hidden="true">↗</span></button>
-          <button class="prompt-chip" type="button" data-prompt="What is the best way to floss?">How do I floss? <span aria-hidden="true">↗</span></button>
-          <button class="prompt-chip" type="button" data-prompt="Why are regular dental visits important?">Why visit a dentist? <span aria-hidden="true">↗</span></button>
-        </div>
-      </div>
-    </section>
+    <div class="main-column">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+        <div class="breadcrumb"><span>Workspace</span><span aria-hidden="true">/</span><strong id="breadcrumb-current">Dashboard</strong></div>
+        <div class="top-actions"><span class="demo-pill"><i></i> DEMO MODE</span><button class="top-avatar" type="button" data-view="profile" aria-label="Open profile">☺</button></div>
+      </header>
 
-    <section class="page-section chat-section section-shell" id="chat" aria-labelledby="chat-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">THE CHAT DEMO</p>
-          <h2 id="chat-title">Let’s talk teeth.</h2>
-          <p class="section-subtitle">Ask a general question and explore a few helpful basics.</p>
-        </div>
-        <span class="demo-badge"><span aria-hidden="true"></span> Educational demo</span>
-      </div>
-      <div class="chat-layout">
-        <div class="chat-card">
-          <div class="chat-topbar">
-            <div class="chat-agent">
-              <span class="agent-avatar" aria-hidden="true">B</span>
-              <span><strong>BrightBite guide</strong><small>Oral health learning assistant</small></span>
+      <div class="safety-banner"><span aria-hidden="true">!</span><p><strong>Education only:</strong> DentiAI does not diagnose or treat. For advice about your own oral health, contact a qualified dental professional.</p><button class="banner-dismiss" type="button" aria-label="Dismiss notice">×</button></div>
+
+      <main id="main" tabindex="-1">
+        <section class="view welcome-view" id="view-welcome" aria-labelledby="welcome-title">
+          <div class="welcome-layout">
+            <div class="welcome-copy">
+              <span class="overline"><span class="status-dot"></span> YOUR ORAL HEALTH LEARNING STUDIO</span>
+              <h1 id="welcome-title">Small steps for a <em>brighter</em> smile.</h1>
+              <p>Explore friendly lessons, build everyday habits, and ask general oral-health questions in one calm, welcoming space.</p>
+              <div class="welcome-points"><span>✓ Bite-sized learning</span><span>✓ Progress saved on this device</span><span>✓ No real account needed</span></div>
+              <div class="welcome-tooth" aria-hidden="true"><div class="tooth-face"><i></i><i></i><b></b></div><span class="tooth-spark s1">✳</span><span class="tooth-spark s2">✦</span><span class="float-label">Healthy habits, made simple</span></div>
+              <p class="welcome-disclaimer">General education only. This demo is not a dental professional or a substitute for individual advice.</p>
             </div>
-            <button class="clear-button" id="clear-chat" type="button">Clear chat</button>
+            <div class="access-card">
+              <span class="card-eyebrow">WELCOME TO DENTIAI</span>
+              <h2>Start your journey</h2>
+              <p class="muted">Choose a demo option to explore the learning studio.</p>
+              <div class="access-tabs" role="group" aria-label="Demo access option">
+                <button class="access-tab selected" type="button" aria-pressed="true" data-access="guest">Guest</button>
+                <button class="access-tab" type="button" aria-pressed="false" data-access="login">Log in</button>
+                <button class="access-tab" type="button" aria-pressed="false" data-access="register">Register</button>
+              </div>
+              <p class="field-help access-mode-note" id="access-mode-note">Continue without a profile, or optionally add a display name.</p>
+              <form id="access-form">
+                <label for="display-name">What should we call you? <span class="optional">Optional</span></label>
+                <input id="display-name" name="displayName" maxlength="24" autocomplete="nickname" placeholder="e.g. Alex">
+                <p class="field-help">Demo only. Don’t enter private or identifying details.</p>
+                <p class="form-feedback" id="access-feedback" role="status"></p>
+                <button class="button button-green full-width" type="submit" id="access-submit">Continue as guest <span>→</span></button>
+              </form>
+              <p class="access-footnote">No password, email, or real account is collected. Your optional display name stays in this browser.</p>
+            </div>
           </div>
-          <div class="chat-messages" id="chat-messages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions text"></div>
-          <p class="typing-indicator" id="typing-indicator" role="status" hidden><span class="typing-dots" aria-hidden="true"><i></i><i></i><i></i></span> BrightBite is preparing a demo reply…</p>
-          <form class="chat-form" id="chat-form">
-            <label class="sr-only" for="chat-input">Type an oral-health question</label>
-            <input id="chat-input" name="message" type="text" maxlength="500" autocomplete="off" placeholder="Type a general oral-health question…" aria-describedby="chat-help chat-feedback">
-            <button class="send-button" type="submit"><span>Send</span><span aria-hidden="true">↑</span></button>
-          </form>
-          <div class="chat-meta">          <span id="chat-help">Don’t share personal or private health information. Demo messages are saved in this browser only.</span><span id="chat-feedback" role="status" aria-live="polite"></span></div>
-        </div>
-        <aside class="chat-aside" aria-label="Suggested questions and safety note">
-          <div class="suggestions-card">
-            <p class="eyebrow">NOT SURE WHERE TO START?</p>
-            <h3>Try asking…</h3>
-            <button class="suggestion" type="button" data-prompt="How often should I brush?">How often should I brush? <span aria-hidden="true">↗</span></button>
-            <button class="suggestion" type="button" data-prompt="What is the best way to floss?">What is the best way to floss? <span aria-hidden="true">↗</span></button>
-            <button class="suggestion" type="button" data-prompt="How can I care for my gums?">How can I care for my gums? <span aria-hidden="true">↗</span></button>
-            <button class="suggestion" type="button" data-prompt="Why are regular dental visits important?">Why see a dental professional? <span aria-hidden="true">↗</span></button>
+        </section>
+
+        <section class="view" id="view-dashboard" aria-labelledby="dashboard-title" hidden>
+          <div class="welcome-strip">
+            <div><p class="overline">YOUR LEARNING DASHBOARD <span class="tiny-spark">✳</span></p><h1 id="dashboard-title">Good day, <span id="greeting-name">learner</span>.</h1><p class="muted">A little progress adds up. What would you like to explore?</p></div>
+            <div class="streak-card"><span class="streak-icon">✦</span><span><strong id="streak-count">0 day</strong><small>learning streak</small></span></div>
           </div>
-          <div class="safety-card">
-            <span class="safety-icon" aria-hidden="true">!</span>
-            <div><strong>Need personal advice?</strong><p>This demo can’t assess symptoms. A qualified dental professional can advise you about your situation.</p><a href="#about">Read our safety note <span aria-hidden="true">→</span></a></div>
+          <div class="stats-grid">
+            <article class="stat-card"><span class="stat-icon mint">▤</span><div><span class="stat-label">LESSONS DONE</span><strong id="stat-lessons">0</strong><small>Keep learning at your pace</small></div><span class="stat-trend">↗</span></article>
+            <article class="stat-card"><span class="stat-icon peach">✦</span><div><span class="stat-label">YOUR XP</span><strong id="stat-xp">0</strong><small>Experience points earned</small></div><span class="stat-trend">↗</span></article>
+            <article class="stat-card"><span class="stat-icon blue">✓</span><div><span class="stat-label">TODAY’S CARE</span><strong id="stat-care">0 / 5</strong><small>Daily checklist progress</small></div><span class="stat-trend">↗</span></article>
           </div>
-        </aside>
-      </div>
-    </section>
+          <div class="section-title-row"><div><p class="overline">YOUR LEARNING STUDIO</p><h2>Pick up where curiosity leads.</h2></div><span class="soft-label">All features are demo experiences</span></div>
+          <div class="module-grid">
+            <button class="module-card module-featured" type="button" data-view="learn"><span class="module-icon">▤</span><span class="module-label">LEARNING LIBRARY</span><h3>Explore oral health</h3><p>Short lessons on anatomy, gums, cavities, and more.</p><span class="module-link">Browse lessons <b>→</b></span><span class="module-decoration">✳</span></button>
+            <button class="module-card" type="button" data-view="bot"><span class="module-icon lavender">◉</span><span class="module-label">DENTIBOT · DEMO</span><h3>Ask a question</h3><p>Try a few prewritten educational responses.</p><span class="module-link">Open chat <b>→</b></span></button>
+            <button class="module-card" type="button" data-view="quiz"><span class="module-icon yellow">✓</span><span class="module-label">QUICK PRACTICE</span><h3>Quiz &amp; flashcards</h3><p>Review key concepts with friendly practice.</p><span class="module-link">Start practicing <b>→</b></span></button>
+            <button class="module-card" type="button" data-view="planner"><span class="module-icon blue">◷</span><span class="module-label">DAILY ROUTINE</span><h3>Oral care planner</h3><p>Track a routine and try a guided brush timer.</p><span class="module-link">View planner <b>→</b></span></button>
+            <button class="module-card" type="button" data-view="clinics"><span class="module-icon peach">⌖</span><span class="module-label">SAMPLE DIRECTORY</span><h3>Clinic finder</h3><p>Browse fictional clinic cards and details.</p><span class="module-link">Browse samples <b>→</b></span></button>
+            <button class="module-card" type="button" data-view="profile"><span class="module-icon mint">◎</span><span class="module-label">MAKE IT YOURS</span><h3>Profile &amp; access</h3><p>Adjust display and accessibility preferences.</p><span class="module-link">Update settings <b>→</b></span></button>
+            <button class="module-card" type="button" data-view="feedback"><span class="module-icon rose">☆</span><span class="module-label">HELP US LEARN</span><h3>Feedback &amp; reviews</h3><p>Share demo feedback and see sample reviews.</p><span class="module-link">Share feedback <b>→</b></span></button>
+          </div>
+          <div class="dashboard-bottom"><div class="quote-mark">“</div><p>Every healthy habit begins with one small step.<small>Keep exploring at your own pace.</small></p><a href="#learn" data-view="learn">Continue learning <span>→</span></a></div>
+        </section>
 
-    <section class="page-section learn-section section-shell" id="learn" aria-labelledby="learn-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">THE EVERYDAY BASICS</p>
-          <h2 id="learn-title">Good habits, one step at a time.</h2>
-          <p class="section-subtitle">A starting point for learning about common oral-health topics.</p>
-        </div>
-        <a class="text-link desktop-link" href="#chat">Ask the guide <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="topic-grid">
-        <article class="topic-card topic-mint"><span class="topic-number">01 / DAILY CARE</span><span class="topic-icon" aria-hidden="true">↗</span><h3>Brushing basics</h3><p>Learn about brushing twice daily, a soft-bristled brush, and gentle, thorough cleaning.</p><button class="topic-link" type="button" data-prompt="How often should I brush?">Ask about brushing <span aria-hidden="true">→</span></button></article>
-        <article class="topic-card topic-peach"><span class="topic-number">02 / BETWEEN TEETH</span><span class="topic-icon" aria-hidden="true">⌁</span><h3>Flossing &amp; cleaning</h3><p>Explore ways to clean between teeth and why those hard-to-reach spaces matter.</p><button class="topic-link" type="button" data-prompt="What is the best way to floss?">Ask about flossing <span aria-hidden="true">→</span></button></article>
-        <article class="topic-card topic-lilac"><span class="topic-number">03 / GUM HEALTH</span><span class="topic-icon" aria-hidden="true">♡</span><h3>Healthy gums</h3><p>Find out how daily cleaning supports gums and what to discuss with a professional.</p><button class="topic-link" type="button" data-prompt="How can I care for my gums?">Ask about gum health <span aria-hidden="true">→</span></button></article>
-        <article class="topic-card topic-yellow"><span class="topic-number">04 / TOOTH HEALTH</span><span class="topic-icon" aria-hidden="true">✳</span><h3>Cavities &amp; prevention</h3><p>Understand the basics of tooth decay, fluoride, and habits that support prevention.</p><button class="topic-link" type="button" data-prompt="What can help prevent cavities?">Ask about cavities <span aria-hidden="true">→</span></button></article>
-        <article class="topic-card topic-blue"><span class="topic-number">05 / CHECK-UPS</span><span class="topic-icon" aria-hidden="true">＋</span><h3>Dental visits</h3><p>Learn why routine visits can be useful and how a dental team can answer questions.</p><button class="topic-link" type="button" data-prompt="Why are regular dental visits important?">Ask about dental visits <span aria-hidden="true">→</span></button></article>
-      </div>
-      <div class="learn-footer"><span>Curiosity is a great place to start.</span><a class="button button-outline" href="#chat">Ask your question <span aria-hidden="true">→</span></a></div>
-    </section>
+        <section class="view" id="view-learn" aria-labelledby="learn-title" hidden>
+          <div class="page-heading"><div><p class="overline">LEARNING LIBRARY</p><h1 id="learn-title">Explore the basics.</h1><p class="muted">Short, general lessons for a curious smile.</p></div><span class="demo-pill">DEMO CONTENT</span></div>
+          <div class="topic-filter" id="topic-filter" aria-label="Filter learning topics"></div>
+          <div class="lesson-grid" id="lesson-grid"></div>
+          <div class="anatomy-panel">
+            <div class="anatomy-copy"><p class="overline">INTERACTIVE EXPLORER</p><h2>A closer look at a tooth.</h2><p class="muted">Choose a part to see a short educational description. The illustration is simplified and not to scale.</p><div class="anatomy-details" id="anatomy-details" aria-live="polite"><strong>Tooth enamel</strong><p>The hard, outer surface of a tooth. It helps protect the layers beneath it.</p></div><div class="anatomy-choices" id="anatomy-choices"></div></div>
+            <div class="tooth-diagram"><svg viewBox="0 0 240 270" role="img" aria-labelledby="tooth-title tooth-description"><title id="tooth-title">Simplified tooth cross-section</title><desc id="tooth-description">A labeled diagram with selectable enamel, dentin, pulp, root, and gum parts.</desc><path class="diagram-root" d="M75 143 C68 177 81 234 103 247 C117 255 118 201 127 195 C137 201 139 255 153 247 C176 234 187 177 179 143Z"/><path class="diagram-dentin" d="M83 125 C76 73 91 45 120 43 C149 45 164 73 157 125 C151 153 136 178 127 183 C116 178 91 153 83 125Z"/><path class="diagram-pulp" d="M108 112 C110 91 114 79 120 78 C127 79 131 91 132 112 C134 136 130 159 126 165 C120 160 108 136 108 112Z"/><path class="diagram-enamel" d="M74 120 C66 87 69 44 91 24 C106 11 133 11 149 24 C171 44 174 87 166 120 L157 132 C162 94 152 58 139 49 C128 41 110 41 100 49 C86 59 78 94 83 132Z"/><path class="diagram-gum" d="M55 139 C78 127 95 132 112 139 C130 146 150 127 185 138 L181 154 C156 147 141 163 125 160 C103 156 82 145 59 155Z"/><circle cx="120" cy="111" r="6" class="diagram-dot"/></svg><span class="diagram-label">SELECT A TOOTH LAYER</span></div>
+          </div>
+        </section>
 
-    <section class="page-section about-section" id="about" aria-labelledby="about-title">
-      <div class="about-inner">
-        <div class="about-copy">
-          <p class="eyebrow">ABOUT BRIGHTBITE</p>
-          <h2 id="about-title">Helpful information.<br><span>Honest boundaries.</span></h2>
-          <p>BrightBite is a small educational prototype designed to make common oral-health topics feel easier to explore. Its chat responses are prewritten examples, not generated advice.</p>
-          <p>Everyone’s needs are different. For questions about your own teeth, gums, symptoms, or care, speak with a qualified dental professional.</p>
-          <a class="button button-light" href="#chat">Explore the chat demo <span aria-hidden="true">→</span></a>
-        </div>
-        <aside class="disclaimer-card">
-          <span class="disclaimer-icon" aria-hidden="true">i</span>
-          <p class="eyebrow">PLEASE NOTE</p>
-          <h3>Education, not diagnosis.</h3>
-          <p>This website is for general educational purposes only. It does not provide diagnosis, treatment, or individualized medical advice, and it does not replace a visit to a dental professional.</p>
-          <p>If you have an urgent or worrying concern, contact an appropriate healthcare professional for advice.</p>
-        </aside>
-      </div>
-    </section>
-  </main>
+        <section class="view" id="view-bot" aria-labelledby="bot-title" hidden>
+          <div class="page-heading"><div><p class="overline">DENTIBOT</p><h1 id="bot-title">Ask a general question.</h1><p class="muted">This interface uses prewritten demo replies—not live AI.</p></div><span class="demo-pill">LOCAL DEMO ONLY</span></div>
+          <div class="bot-layout">
+            <div class="chat-panel">
+              <div class="chat-header"><span class="bot-avatar">D</span><div><strong>DentiBot</strong><small><i></i> Educational demo · no live AI</small></div><button id="clear-chat" class="quiet-button" type="button">Clear chat</button></div>
+              <div class="chat-log" id="chat-log" role="log" aria-label="DentiBot conversation" aria-live="polite" aria-relevant="additions text"></div>
+              <p id="bot-typing" class="typing" role="status" hidden><span>•••</span> Preparing a demo reply…</p>
+              <div class="chat-prompts"><span>TRY A TOPIC</span><button type="button" data-prompt="What is enamel?">What is enamel?</button><button type="button" data-prompt="How do I care for gums?">Gum health</button><button type="button" data-prompt="Tell me about braces">Orthodontics</button></div>
+              <form id="chat-form" class="chat-form"><label class="sr-only" for="chat-input">Ask DentiBot a general oral-health question</label><input id="chat-input" maxlength="400" placeholder="Ask a general learning question…"><button class="button button-green" type="submit">Send <span>↑</span></button></form>
+              <div class="chat-foot"><span>Don’t share personal health information.</span><span id="chat-status" role="status"></span></div>
+            </div>
+            <aside class="bot-aside"><div class="aside-card"><p class="overline">A HELPFUL REMINDER</p><h3>Learning, not a diagnosis.</h3><p>Replies are prewritten examples for general education. Contact a dental professional for individual concerns.</p></div><div class="aside-card"><p class="overline">RESPONSE OPTIONS</p><div class="action-list"><button type="button" id="detail-toggle">↔ <span>Switch simple / detailed</span></button><button type="button" id="speak-answer">◖ <span>Read last reply aloud</span></button><button type="button" id="copy-answer">▢ <span>Copy last reply</span></button><button type="button" id="make-chat-quiz">✓ <span>Make a quiz question</span></button></div><p id="bot-action-status" class="inline-status" role="status"></p></div></aside>
+          </div>
+        </section>
 
-  <footer class="site-footer">
-    <a class="brand footer-brand" href="#home"><span class="brand-mark" aria-hidden="true">B</span><span>BrightBite<span class="brand-caption">ORAL HEALTH, MADE CLEAR</span></span></a>
-    <p>A learning prototype, made with care.</p>
-    <a href="#about">Educational disclaimer <span aria-hidden="true">↑</span></a>
-    <span class="copyright">© 2026 BrightBite demo</span>
-  </footer>
+        <section class="view" id="view-quiz" aria-labelledby="quiz-title" hidden>
+          <div class="page-heading"><div><p class="overline">QUICK PRACTICE</p><h1 id="quiz-title">Quiz &amp; flashcards.</h1><p class="muted">Practice general oral-health knowledge at your own pace.</p></div><span class="demo-pill">DEMO ACTIVITIES</span></div>
+          <div class="quiz-tabs" role="tablist" aria-label="Practice mode"><button class="quiz-tab selected" id="quiz-tab-quiz" type="button" role="tab" aria-controls="quiz-mode-quiz" data-quiz-mode="quiz" aria-selected="true">Quick quiz</button><button class="quiz-tab" id="quiz-tab-cards" type="button" role="tab" aria-controls="quiz-mode-cards" data-quiz-mode="cards" aria-selected="false">Flashcards</button></div>
+          <div id="quiz-mode-quiz" class="practice-card" role="tabpanel" aria-labelledby="quiz-tab-quiz" tabindex="0">
+            <div class="practice-top"><div><p class="overline">KNOWLEDGE CHECK</p><h2 id="question-topic">Daily care</h2></div><span class="question-count" id="question-count">Question 1 of 5</span></div>
+            <div class="progress-track"><span id="quiz-progress"></span></div>
+            <h3 class="quiz-question" id="quiz-question"></h3>
+            <div class="answer-options" id="answer-options"></div>
+            <p class="answer-feedback" id="answer-feedback" aria-live="polite"></p>
+            <div class="practice-actions"><span id="quiz-score">Score: 0</span><button class="button button-green" type="button" id="quiz-next">Check answer <span>→</span></button></div>
+          </div>
+          <div id="quiz-mode-cards" class="practice-card" role="tabpanel" aria-labelledby="quiz-tab-cards" tabindex="0" hidden><div class="practice-top"><div><p class="overline">FLIP TO REVIEW</p><h2>Flashcards</h2></div><div><label class="sr-only" for="card-topic">Filter flashcards by topic</label><select id="card-topic" aria-label="Filter flashcards by topic"></select><span class="question-count" id="card-count">Card 1 of 5</span></div></div><button class="flashcard" id="flashcard" type="button" aria-pressed="false"><span class="flashcard-hint">TAP OR PRESS ENTER TO FLIP</span><strong id="flashcard-content"></strong></button><div class="practice-actions"><span>Use the card to review a general concept.</span><button class="button button-outline" id="card-next" type="button">Next card <span>→</span></button></div></div>
+          <div class="review-hint"><span class="hint-icon">✦</span><p><strong>Keep learning, one question at a time.</strong><br>Quiz scores and completed cards are saved only in this browser as demo progress.<br>Topics to revisit: <span id="topics-to-review">None yet</span></p></div>
+        </section>
+
+        <section class="view" id="view-planner" aria-labelledby="planner-title" hidden>
+          <div class="page-heading"><div><p class="overline">DAILY ROUTINE</p><h1 id="planner-title">Your oral care planner.</h1><p class="muted">A flexible checklist for everyday habit building.</p></div><span class="date-label" id="today-label"></span></div>
+          <div class="planner-layout">
+            <div class="planner-card"><div class="planner-heading"><div><p class="overline">TODAY’S CHECKLIST</p><h2>Small steps count.</h2></div><span class="completion-ring" id="completion-ring"><b id="completion-value">0%</b></span></div><div class="planner-progress"><span id="planner-progress"></span></div><p class="muted small" id="planner-summary">0 of 5 activities complete</p><div class="checklist" id="checklist"></div><p class="field-help">Your checklist resets each day. This is a demo habit tracker, not a care prescription.</p></div>
+            <div class="timer-card"><p class="overline">GUIDED BRUSH TIMER</p><h2>Two calm minutes.</h2><p class="muted">30 seconds for each mouth quadrant.</p><div class="timer-display" id="timer-display" role="timer" aria-label="2 minutes remaining">02:00</div><div class="quadrants" id="quadrants"><span class="quadrant active">Upper right</span><span class="quadrant">Upper left</span><span class="quadrant">Lower left</span><span class="quadrant">Lower right</span></div><div class="timer-actions"><button class="button button-green" type="button" id="timer-toggle">Start timer</button><button class="button button-outline" type="button" id="timer-reset">Reset</button></div><p class="timer-status" id="timer-status" role="status">Visual timer only. No sound will play.</p></div>
+          </div>
+          <div class="reminder-card"><div><span class="reminder-icon">◷</span><span><strong>Gentle reminders</strong><small>Demo preference only; this prototype will not send notifications.</small></span></div><label class="switch-label"><span>Reminder time</span><input id="reminder-time" type="time" value="08:00"></label><label class="switch-control"><span>Enable demo reminder</span><input id="reminder-enabled" type="checkbox"><i aria-hidden="true"></i></label><p class="inline-status" id="reminder-status" role="status"></p></div>
+        </section>
+
+        <section class="view" id="view-clinics" aria-labelledby="clinics-title" hidden>
+          <div class="page-heading"><div><p class="overline">SAMPLE DIRECTORY</p><h1 id="clinics-title">Find a clinic.</h1><p class="muted">Explore fictional example listings and services.</p></div><span class="demo-pill">NOT REAL LOCATIONS</span></div>
+          <div class="clinic-notice"><span>i</span><p><strong>Sample data only.</strong> No real clinics, map, contact details, or live directory are connected. Never rely on these listings to find care.</p></div>
+          <div class="clinic-search"><label for="clinic-query">Search name, sample area, or service</label><div class="search-controls"><input id="clinic-query" type="search" placeholder="Try “family” or “general dentistry”"><select id="clinic-service" aria-label="Filter by service"><option value="">All sample services</option><option>General dentistry</option><option>Pediatric dentistry</option><option>Orthodontics</option><option>Preventive care</option></select></div><p id="clinic-count" class="field-help" aria-live="polite"></p></div>
+          <div class="clinic-grid" id="clinic-grid"></div>
+          <dialog id="clinic-dialog" class="clinic-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close clinic details">×</button></form><p class="overline">FICTIONAL SAMPLE LISTING</p><h2 id="clinic-dialog-title"></h2><div id="clinic-dialog-content"></div><p class="clinic-disclaimer">For illustration only. This clinic and all details are fictional.</p><button class="button button-outline" type="button" id="close-clinic-dialog">Close details</button></dialog>
+        </section>
+
+        <section class="view" id="view-profile" aria-labelledby="profile-title" hidden>
+          <div class="page-heading"><div><p class="overline">YOUR PREFERENCES</p><h1 id="profile-title">Profile &amp; accessibility.</h1><p class="muted">Make this demo more comfortable for you.</p></div><span class="demo-pill">SAVED ON THIS DEVICE</span></div>
+          <div class="settings-grid">
+            <article class="settings-card"><p class="overline">DEMO PROFILE</p><h2>A name for your space.</h2><label for="profile-name">Display name <span class="optional">Optional</span></label><input id="profile-name" maxlength="24" placeholder="Guest learner"><p class="field-help">Keep it non-identifying; this stays on this device.</p><fieldset><legend>Choose an avatar</legend><div class="avatar-options" id="avatar-options"><button type="button" aria-label="Choose smile avatar" data-avatar="☺">☺</button><button type="button" aria-label="Choose sparkle avatar" data-avatar="✦">✦</button><button type="button" aria-label="Choose leaf avatar" data-avatar="❋">❋</button><button type="button" aria-label="Choose sun avatar" data-avatar="☼">☼</button></div></fieldset><p class="inline-status" id="profile-status" role="status"></p></article>
+            <article class="settings-card"><p class="overline">DISPLAY &amp; ACCESS</p><h2>Comfortable your way.</h2><label for="font-size">Text size</label><select id="font-size"><option value="normal">Default</option><option value="large">Large</option><option value="larger">Extra large</option></select><div class="setting-row"><span><strong>High contrast</strong><small>Increase borders and text contrast.</small></span><label class="switch-control"><span class="sr-only">High contrast</span><input id="high-contrast" type="checkbox"><i aria-hidden="true"></i></label></div><div class="setting-row"><span><strong>Reduce motion</strong><small>Limit decorative transitions.</small></span><label class="switch-control"><span class="sr-only">Reduce motion</span><input id="reduce-motion" type="checkbox"><i aria-hidden="true"></i></label></div><label for="theme-choice">Color theme</label><select id="theme-choice"><option value="light">Light</option><option value="dark">Dark</option></select><label for="language-choice">Preferred language</label><select id="language-choice"><option value="en">English</option><option value="other">Other (content remains English)</option></select><p class="field-help">Language is a saved preference only; demo content is currently in English.</p></article>
+          </div>
+          <article class="settings-card privacy-card"><p class="overline">PRIVACY &amp; LOCAL DATA</p><h2>Your demo data stays in this browser.</h2><p class="muted">This prototype does not send anything to a server. It may save your display preference, lessons, checklist, chat messages, and quiz progress in this browser’s local storage.</p><div class="privacy-actions"><button class="button button-outline" type="button" id="reset-settings">Reset preferences</button><button class="button button-danger" type="button" id="clear-data">Clear all demo data</button></div><p id="privacy-status" class="inline-status" role="status"></p></article>
+        </section>
+
+        <section class="view" id="view-feedback" aria-labelledby="feedback-title" hidden>
+          <div class="page-heading"><div><p class="overline">YOUR VOICE MATTERS</p><h1 id="feedback-title">Feedback &amp; reviews.</h1><p class="muted">Help us understand your experience with this frontend demo.</p></div><span class="demo-pill">LOCAL DEMO ONLY</span></div>
+          <div class="feedback-layout">
+            <form class="feedback-card" id="feedback-form"><p class="overline">SHARE A THOUGHT</p><h2>What did you think?</h2><p class="muted">Your submission stays on this page and is not sent or stored.</p><fieldset class="rating-field"><legend>Your rating</legend><div class="rating-options"><label><input type="radio" name="rating" value="1"><span>1</span></label><label><input type="radio" name="rating" value="2"><span>2</span></label><label><input type="radio" name="rating" value="3"><span>3</span></label><label><input type="radio" name="rating" value="4"><span>4</span></label><label><input type="radio" name="rating" value="5"><span>5</span></label></div><span class="field-help">1 = needs work, 5 = great demo</span></fieldset><label for="feedback-type">Feedback type</label><select id="feedback-type"><option value="">Choose one</option><option>Suggestion</option><option>Issue report</option><option>General feedback</option></select><label for="feedback-message">Your feedback</label><textarea id="feedback-message" rows="4" maxlength="500" placeholder="Share a thought about the demo — please don’t include personal or health information."></textarea><p id="feedback-status" class="form-feedback" role="status"></p><button class="button button-green" type="submit">Show demo confirmation <span>→</span></button></form>
+            <div class="reviews-card"><p class="overline">COMMUNITY CORNER</p><h2>Sample reviews.</h2><p class="muted">Illustrative fictional examples, not real user submissions.</p><article class="review"><span class="review-avatar">A</span><div><div class="review-head"><strong>Sample learner A</strong><span>★★★★★</span></div><p>“The small lessons made it easy to explore a topic at my own pace.”</p><small>Illustrative sample review · Not a real testimonial</small></div></article><article class="review"><span class="review-avatar alt">B</span><div><div class="review-head"><strong>Sample learner B</strong><span>★★★★☆</span></div><p>“I liked seeing the checklist and learning cards together.”</p><small>Illustrative sample review · Not a real testimonial</small></div></article><div class="review-note">Reviews shown here are fictional placeholders for this prototype.</div></div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer"><span>DentiAI learning studio <b>·</b> Frontend prototype</span><a href="#profile" data-view="profile">Privacy &amp; local data</a><span>General education only</span></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
